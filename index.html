@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Isotope CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.min.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Add your custom CSS styles here */
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Portfolio</h2>
+      <div id="portfolio-filters" class="button-group">
+        <button class="btn btn-primary" data-filter="*">All</button>
+        <button class="btn btn-primary" data-filter=".web-design">Web Design</button>
+        <button class="btn btn-primary" data-filter=".graphic-design">Graphic Design</button>
+        <!-- Add more filter buttons as needed -->
+      </div>
+    </div>
+  </div>
+<br><br>
+  <div class="row" id="portfolio-items">
+    <!-- Portfolio items will be dynamically added here -->
+    <div class="col-md-3 portfolio-item web-design">
+      <img src="assets/img/portfolio/portfolio-1.jpg" alt="Portfolio Item 1" style="height: 200px;">
+    </div>
+    <div class="col-md-3 portfolio-item web-design">
+        <img src="assets/img/portfolio/portfolio-2.jpg" alt="Portfolio Item 2" style="height: 200px;">
+      </div>
+    <div class="col-md-3 portfolio-item graphic-design">
+      <img src="assets/img/portfolio/portfolio-3.jpg" alt="Portfolio Item 3" style="height: 200px;">
+    </div>
+    <div class="col-md-3 portfolio-item graphic-design">
+        <img src="assets/img/portfolio/portfolio-4.jpg" alt="Portfolio Item 4" style="height: 200px;">
+      </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Isotope JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Custom JS -->
+<script>
+  $(document).ready(function(){
+    // Initialize Isotope
+    var $grid = $('#portfolio-items').isotope({
+      itemSelector: '.portfolio-item',
+      layoutMode: 'fitRows'
+    });
+
+    // Filter items on button click
+    $('#portfolio-filters').on( 'click', 'button', function() {
+      var filterValue = $(this).attr('data-filter');
+      $grid.isotope({ filter: filterValue });
+    });
+
+    // Initialize Swiper
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
+
+</body>
+</html>
